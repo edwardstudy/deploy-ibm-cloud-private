@@ -12,7 +12,7 @@
         hostname: "{{ item }}"
         domain: example.com
         datacenter: "{{ sl_datacenter|default('dal09') }}"
-        tags: "{{ item }},icp,master"
+        tags: "{{ item }},ed-icp,master"
         hourly: True
         private: False
         dedicated: False
@@ -31,7 +31,7 @@
         hostname: "{{ item }}"
         domain: example.com
         datacenter: "{{ sl_datacenter|default('dal09') }}"
-        tags: "{{ item }},icp,worker"
+        tags: "{{ item }},ed-icp,worker"
         hourly: True
         private: False
         dedicated: False
@@ -50,7 +50,7 @@
         hostname: "{{ item }}"
         domain: example.com
         datacenter: "{{ sl_datacenter|default('dal09') }}"
-        tags: "{{ item }},icp,proxy"
+        tags: "{{ item }},ed-icp,proxy"
         hourly: True
         private: False
         dedicated: False

@@ -46,7 +46,7 @@ $ slcli sshkey list
 :........:....................:.................................................:.......:
 ```
 
-> Set the `sl_ssh_key` variable in `clusters/config.yaml` with the id
+> Set the `sl_ssh_key` variable in `cluster/config.yaml` with the id
   from the output of the `slcli sshkey list` command.
 
 Pick a datacenter and a VLAN to deploy to:
@@ -60,7 +60,7 @@ slcli vlan list
 : 2073385 :  812   :  -   :    No    :   dal09    :    0     :        1        :     13     :
 ```
 
-> Set the `sl_datacenter` and `sl_vlan` variables in `clusters/config.yaml`
+> Set the `sl_datacenter` and `sl_vlan` variables in `cluster/config.yaml`
   using the datacenter name (ex dal09) and vlan id (ex 2073387). Unless you're very familiar
   with your softlayer account you may need to use the softlayer
   web portal to pick a VLAN to use.  If you skip this step SL will pick a random vlan and you

@@ -52,9 +52,10 @@
       with_items: [dnsmasq,vim,python-pip,nfs-common]
       when: ansible_os_family == 'Debian'
 
+    # Ubuntu bionic does not install resolvconf command
     - name: disable resolvconf updates
       command: resolvconf --disable-updates
-      when: ansible_os_family == 'Debian'
+      when: ansible_os_family == 'Debian' and ansible_distribution_release != 'bionic'
 
     - name: add alternative dnsmasq resolv.conf
       lineinfile:
@@ -77,12 +78,14 @@
         regexp: "nameserver {{ item }}"
         state: absent
       with_items: [10.0.80.11, 10.0.80.12, 127.0.0.1]
+      when: ansible_distribution_release != 'bionic'
 
     - name: rewrite /var/run/resolvconf/resolv.conf
       lineinfile:
         line: "nameserver {{ primaryBackendIpAddress }}"
         path: /var/run/resolvconf/resolv.conf
         regexp: "nameserver {{ primaryBackendIpAddress }}"
+      when: ansible_distribution_release != 'bionic'
 
     - name: remove /etc/hosts
       file:
